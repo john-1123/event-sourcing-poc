@@ -72,7 +72,6 @@ public class Category {
         } else if (event instanceof AttributeUpdatedEvent) {
             applyUpdatedEvent((AttributeUpdatedEvent) event);
         } else throw new IllegalArgumentException();
-
     }
 
 //    private void applyCreatedEvent(EntityCreatedEvent<Category> event) {
