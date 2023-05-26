@@ -1,7 +1,10 @@
-package nccu.jpetstore.domain.event;
+package nccu.jpetstore.domain.core;
 
 import com.eventstore.dbclient.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import nccu.jpetstore.domain.core.event.AttributeUpdatedEvent;
+import nccu.jpetstore.domain.core.event.DomainEvent;
+import nccu.jpetstore.domain.core.event.EntityCreatedEvent;
 
 import java.io.IOException;
 import java.util.*;
@@ -93,8 +96,10 @@ public class EventStore {
     }
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        EventStore eventStore = new EventStore("esdb://127.0.0.1:2113?tls=false&keepAliveTimeout=10000&keepAliveInterval=10000");
-        List<DomainEvent> results = eventStore.getStream("nccu.jpetstore.domain.event.Category.863d988c-bdd8-4206-9a38-fdda1a443a9c");
+        EventStore eventStore = new EventStore(
+                "esdb://127.0.0.1:2113?tls=false&keepAliveTimeout=10000&keepAliveInterval=10000");
+        List<DomainEvent> results = eventStore.getStream(
+                "nccu.jpetstore.domain.event.category.Category.863d988c-bdd8-4206-9a38-fdda1a443a9c");
         for (DomainEvent e : results) {
             System.out.println(e);
         }
@@ -103,10 +108,12 @@ public class EventStore {
     private static DomainEvent deserialize(Map map) {
         String eventType = (String) map.get("eventType");
         DomainEvent result = null;
-        if ("nccu.jpetstore.domain.event.EntityCreatedEvent".equals(eventType)) {
-            result = new EntityCreatedEvent((String) map.get("streamId"), (String) map.get("entityType"), new Date().getTime());
-        } else if ("nccu.jpetstore.domain.event.AttributeUpdatedEvent".equals(eventType)) {
-            AttributeUpdatedEvent event = new AttributeUpdatedEvent((String) map.get("streamId"), (String) map.get("entityType"), new Date().getTime());
+        if ("nccu.jpetstore.domain.core.events.EntityCreatedEvent".equals(eventType)) {
+            result = new EntityCreatedEvent(
+                    (String) map.get("streamId"), (String) map.get("entityType"), new Date().getTime());
+        } else if ("nccu.jpetstore.domain.core.events.AttributeUpdatedEvent".equals(eventType)) {
+            AttributeUpdatedEvent event = new AttributeUpdatedEvent(
+                    (String) map.get("streamId"), (String) map.get("entityType"), new Date().getTime());
             event.setName((String) map.get("name"));
             event.setValue(map.get("value"));
             result = event;

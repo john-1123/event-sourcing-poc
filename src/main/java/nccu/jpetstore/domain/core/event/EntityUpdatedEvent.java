@@ -1,4 +1,4 @@
-package nccu.jpetstore.domain.event;
+package nccu.jpetstore.domain.core.event;
 
 import java.util.HashMap;
 import java.util.Map;

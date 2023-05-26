@@ -1,4 +1,4 @@
-package nccu.jpetstore.domain.event;
+package nccu.jpetstore.domain.core.event;
 
 public class AttributeUpdatedEvent extends DomainEvent {
     // private Map.Entry<String, Object> entry;

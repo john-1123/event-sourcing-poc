@@ -1,16 +1,19 @@
-package nccu.jpetstore.domain.event;
+package nccu.jpetstore.domain.test;
 
 import com.eventstore.dbclient.*;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+import nccu.jpetstore.domain.core.event.DomainEvent;
+import nccu.jpetstore.domain.entity.Category;
 
 public class CategoryEventStoreTest {
 
     public static void main(String[] args) throws Exception {
-        EventStoreDBClientSettings settings = EventStoreDBConnectionString.parse("esdb://127.0.0.1:2113?tls=false&keepAliveTimeout=10000&keepAliveInterval=10000");
+        EventStoreDBClientSettings settings = EventStoreDBConnectionString.parse(
+                "esdb://127.0.0.1:2113?tls=false&keepAliveTimeout=10000&keepAliveInterval=10000");
         EventStoreDBClient client = EventStoreDBClient.create(settings);
 
-        //EntityCreatedEvent event = new EntityCreatedEvent(UUID.randomUUID().toString(), Category.class.getName(), new Date().getTime());
+//        EntityCreatedEvent event = new EntityCreatedEvent(
+//                UUID.randomUUID().toString(), Category.class.getName(), new Date().getTime());
 
         Category category = new Category();
 
@@ -24,9 +27,9 @@ public class CategoryEventStoreTest {
             EventData eventData = EventData
                     .builderAsJson(e.getClass().getName(), e)
                     .build();
-            //System.out.println(e.getId());
+//            System.out.println(e.getStreamId());
             client.appendToStream(e.getStreamId(), eventData).get();
-            //System.out.println(eventData);
+//            System.out.println(eventData);
         }
 
 

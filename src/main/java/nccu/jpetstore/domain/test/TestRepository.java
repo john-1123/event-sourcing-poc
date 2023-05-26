@@ -1,4 +1,8 @@
-package nccu.jpetstore.domain.event;
+package nccu.jpetstore.domain.test;
+
+import nccu.jpetstore.domain.core.EventSourcedCategoryRepository;
+import nccu.jpetstore.domain.core.EventStore;
+import nccu.jpetstore.domain.entity.Category;
 
 public class TestRepository {
 

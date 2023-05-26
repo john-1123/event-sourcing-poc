@@ -1,14 +1,16 @@
-package nccu.jpetstore.domain.event;
+package nccu.jpetstore.domain.core;
+
+import nccu.jpetstore.domain.core.event.DomainEvent;
+import nccu.jpetstore.domain.entity.Category;
 
 import java.util.List;
 
 public class EventSourcedCategoryRepository {
+    private EventStore eventStore;
 
     public EventSourcedCategoryRepository(EventStore eventStore) {
         this.eventStore = eventStore;
     }
-
-    private EventStore eventStore;
 
     public String save(Category category) {
         String streamId = null;

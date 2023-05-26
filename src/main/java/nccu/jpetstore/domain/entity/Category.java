@@ -1,4 +1,8 @@
-package nccu.jpetstore.domain.event;
+package nccu.jpetstore.domain.entity;
+
+import nccu.jpetstore.domain.core.event.AttributeUpdatedEvent;
+import nccu.jpetstore.domain.core.event.DomainEvent;
+import nccu.jpetstore.domain.core.event.EntityCreatedEvent;
 
 import java.util.*;
 

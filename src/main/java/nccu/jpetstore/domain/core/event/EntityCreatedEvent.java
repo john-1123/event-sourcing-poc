@@ -1,4 +1,4 @@
-package nccu.jpetstore.domain.event;
+package nccu.jpetstore.domain.core.event;
 
 public class EntityCreatedEvent extends DomainEvent {
 

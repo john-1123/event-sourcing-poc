@@ -1,4 +1,6 @@
-package nccu.jpetstore.domain.event;
+package nccu.jpetstore.domain.test;
+
+import nccu.jpetstore.domain.entity.Category;
 
 public class TestCategory {
     public static void main(String[] args){

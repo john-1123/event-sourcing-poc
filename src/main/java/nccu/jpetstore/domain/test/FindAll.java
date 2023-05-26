@@ -1,4 +1,4 @@
-package nccu.jpetstore.domain.event;
+package nccu.jpetstore.domain.test;
 
 import com.eventstore.dbclient.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
