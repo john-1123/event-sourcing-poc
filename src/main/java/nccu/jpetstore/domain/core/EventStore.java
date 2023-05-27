@@ -76,6 +76,25 @@ public class EventStore {
 //        return results;
 //    }
 
+    public List<DomainEvent> getStream(String streamId, long version) {
+        List<DomainEvent> results = new ArrayList<>();
+
+        try {
+            ReadStreamOptions options = ReadStreamOptions.get()
+                    .fromRevision(version)
+                    .backwards();
+            List<ResolvedEvent> events = client.readStream(streamId, options).get().getEvents();
+            for (ResolvedEvent event : events) {
+                ObjectMapper mapper = new ObjectMapper();
+                results.add(deserialize(mapper.readValue(event.getOriginalEvent().getEventData(), LinkedHashMap.class)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return results;
+    }
+
     public List<DomainEvent> getStream(String streamId) {
         List<DomainEvent> results = new ArrayList<>();
 

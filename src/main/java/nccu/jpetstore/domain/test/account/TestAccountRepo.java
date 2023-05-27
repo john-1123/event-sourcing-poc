@@ -13,6 +13,7 @@ public class TestAccountRepo {
         String accountId = testCreate();
         testFindBy(accountId);
         testAppend(accountId);
+        testFindBy(accountId, 4);
     }
 
     private static void testAppend(String accountId) {
@@ -25,7 +26,13 @@ public class TestAccountRepo {
 
     private static void testFindBy(String accountId) {
         Account account = repository.findBy(accountId);
-        System.out.println("======Test Find Account By AccountId======");
+        System.out.println("======Test Find Account by AccountId======");
+        System.out.println(account);
+    }
+
+    private static void testFindBy(String accountId, long version) {
+        Account account = repository.findBy(accountId, version);
+        System.out.println("======Test Find Account by AccountId to Version======");
         System.out.println(account);
     }
 

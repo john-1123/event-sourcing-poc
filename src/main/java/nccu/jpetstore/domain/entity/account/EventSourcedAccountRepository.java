@@ -34,4 +34,14 @@ public class EventSourcedAccountRepository {
         }
         return account;
     }
+
+    public Account findBy(String accountId, long version) {
+        String streamId = Account.class.getName() + "." + accountId;
+        List<DomainEvent> events = eventStore.getStream(streamId, version);
+        Account account = new Account(accountId);
+        for (DomainEvent event: events) {
+            account.mutate(event);
+        }
+        return account;
+    }
 }
