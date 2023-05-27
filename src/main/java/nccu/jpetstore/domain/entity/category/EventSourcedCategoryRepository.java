@@ -1,7 +1,7 @@
-package nccu.jpetstore.domain.core;
+package nccu.jpetstore.domain.entity.category;
 
+import nccu.jpetstore.domain.core.EventStore;
 import nccu.jpetstore.domain.core.event.DomainEvent;
-import nccu.jpetstore.domain.entity.Category;
 
 import java.util.List;
 
@@ -39,7 +39,8 @@ public class EventSourcedCategoryRepository {
     }
 
     public static void main(String[] args) {
-//        EventStore eventStore = new EventStore("esdb://127.0.0.1:2113?tls=false&keepAliveTimeout=10000&keepAliveInterval=10000");
+//        EventStore eventStore = new EventStore(
+//                "esdb://127.0.0.1:2113?tls=false&keepAliveTimeout=10000&keepAliveInterval=10000");
 //        EventSourcedCategoryRepository repository = new EventSourcedCategoryRepository(eventStore);
 //        Category category = repository.findBy("863d988c-bdd8-4206-9a38-fdda1a443a9c");
 //        System.out.println(category);

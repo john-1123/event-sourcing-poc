@@ -1,6 +1,6 @@
-package nccu.jpetstore.domain.test;
+package nccu.jpetstore.domain.test.category;
 
-import nccu.jpetstore.domain.entity.Category;
+import nccu.jpetstore.domain.entity.category.Category;
 
 public class TestCategory {
     public static void main(String[] args){

@@ -1,9 +1,9 @@
-package nccu.jpetstore.domain.test;
+package nccu.jpetstore.domain.test.account;
 
 import com.eventstore.dbclient.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nccu.jpetstore.domain.core.event.DomainEvent;
-import nccu.jpetstore.domain.entity.Account;
+import nccu.jpetstore.domain.entity.account.Account;
 
 public class AccountEventStoreTest {
 
@@ -35,7 +35,16 @@ public class AccountEventStoreTest {
 //            System.out.println(eventData);
         }
 
-
+//        ReadStreamOptions options = ReadStreamOptions.get().forwards().fromRevision(2).maxCount(10);
+//        ReadResult result = client.readStream(
+//                "nccu.jpetstore.domain.entity.account.Account.bfa1cecf-9908-43b0-b803-293be562908c",
+//                options).get();
+//        ObjectMapper mapper = new ObjectMapper();
+//        for (ResolvedEvent resolvedEvent: result.getEvents()) {
+//            RecordedEvent recordedEvent = resolvedEvent.getOriginalEvent();
+//            byte[] data = recordedEvent.getEventData();
+//            System.out.println(mapper.readValue(data, Object.class));
+//        }
         ReadStreamOptions options = ReadStreamOptions.get().fromEnd().backwards().maxCount(1);
 
         ReadResult result = client.readStream(account.getEvents().get(0).getStreamId(), options)

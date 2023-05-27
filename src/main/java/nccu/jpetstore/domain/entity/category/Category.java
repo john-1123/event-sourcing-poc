@@ -1,4 +1,4 @@
-package nccu.jpetstore.domain.entity;
+package nccu.jpetstore.domain.entity.category;
 
 import nccu.jpetstore.domain.core.event.AttributeUpdatedEvent;
 import nccu.jpetstore.domain.core.event.DomainEvent;

@@ -1,9 +1,9 @@
-package nccu.jpetstore.domain.test;
+package nccu.jpetstore.domain.test.category;
 
 import com.eventstore.dbclient.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nccu.jpetstore.domain.core.event.DomainEvent;
-import nccu.jpetstore.domain.entity.Category;
+import nccu.jpetstore.domain.entity.category.Category;
 
 public class CategoryEventStoreTest {
 

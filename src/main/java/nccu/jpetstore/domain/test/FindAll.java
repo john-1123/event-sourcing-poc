@@ -7,11 +7,13 @@ import java.util.List;
 
 public class FindAll {
     public static void main(String[] args) throws Exception {
-        EventStoreDBClientSettings settings = EventStoreDBConnectionString.parse("esdb://127.0.0.1:2113?tls=false&keepAliveTimeout=10000&keepAliveInterval=10000");
+        EventStoreDBClientSettings settings = EventStoreDBConnectionString.parse(
+                "esdb://127.0.0.1:2113?tls=false&keepAliveTimeout=10000&keepAliveInterval=10000");
         EventStoreDBClient client = EventStoreDBClient.create(settings);
 
-        ReadStreamOptions options = ReadStreamOptions.get().fromEnd().backwards().maxCount(2);
-        ReadResult result = client.readStream("$streams",options).get();
+        // 從尾巴往回讀取 event，最多 5 個 event (maxCount=5)
+        ReadStreamOptions options = ReadStreamOptions.get().fromEnd().backwards().maxCount(5);
+        ReadResult result = client.readStream("$streams", options).get();
 
         List<ResolvedEvent> events = result.getEvents();
         for (ResolvedEvent e : events) {
