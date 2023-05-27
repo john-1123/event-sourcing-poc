@@ -138,4 +138,10 @@ public class Account {
     public List<DomainEvent> getEvents() {
         return this.eventCache;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Account{accountId='%s', username='%s', password='%s, email='%s, firstName='%s, , LastName='%s'}",
+                accountId, username, password, email, firstName, lastName);
+    }
 }
