@@ -35,6 +35,7 @@ public class Account {
     public Account() {
         this.eventCache = new ArrayList<>();
         this.accountId = UUID.randomUUID().toString();
+        cause(new EntityCreatedEvent(getStreamId(), Account.class.getName(), new Date().getTime()));
     }
 
     public Account(String accountId) {
